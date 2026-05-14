@@ -17,8 +17,10 @@ Module responsibilities:
 import dash
 import dash_bootstrap_components as dbc
 from dash import Dash, Input, Output, dcc, html
+from pathlib import Path
 
 from config import COMPANY_NAME, TICKER
+from cache import cache
 
 # ─────────────────────────────────────────────────────────────────────────────
 # APP INIT
@@ -31,6 +33,15 @@ app = Dash(
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
 )
 server = app.server   # for Gunicorn / Render deployment
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CACHE INIT  (filesystem — safe for multi-worker Gunicorn on Render)
+# ─────────────────────────────────────────────────────────────────────────────
+cache.init_app(server, config={
+    "CACHE_TYPE":            "FileSystemCache",
+    "CACHE_DIR":             str(Path(__file__).parent / ".flask_cache"),
+    "CACHE_DEFAULT_TIMEOUT": 3600,   # 1 hour — financial data is quarterly
+})
 
 
 # ─────────────────────────────────────────────────────────────────────────────

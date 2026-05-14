@@ -14,6 +14,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_absolute_percentage_error
 
+from cache import cache
 from config import FORECAST_HORIZON, VALIDATION_WINDOW
 
 
@@ -139,6 +140,7 @@ def _ensemble(results: dict) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
 # PUBLIC API
 # ─────────────────────────────────────────────────────────────────────────────
 
+@cache.memoize(timeout=3600)
 def run_all_forecasts(
     series: pd.Series,
     horizon: int = FORECAST_HORIZON,

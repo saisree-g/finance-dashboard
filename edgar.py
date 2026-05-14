@@ -10,6 +10,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 
+from cache import cache
 from config import (
     CIK, EDGAR_BASE, EDGAR_HEADERS,
     REVENUE_KEYS, GROSS_PROFIT_KEYS,
@@ -111,9 +112,10 @@ def _build_df(facts: dict) -> pd.DataFrame:
 # PUBLIC API
 # ─────────────────────────────────────────────────────────────────────────────
 
-def load_financials(force_refresh: bool = False) -> pd.DataFrame:
-    """Load from Parquet cache; fetch from EDGAR if cache is absent or stale."""
-    if _CACHE.exists() and not force_refresh:
+@cache.memoize(timeout=3600)
+def load_financials() -> pd.DataFrame:
+    """Load from Parquet cache; fetch from EDGAR if parquet is absent."""
+    if _CACHE.exists():
         return pd.read_parquet(_CACHE)
 
     facts = _fetch_facts()
@@ -123,4 +125,8 @@ def load_financials(force_refresh: bool = False) -> pd.DataFrame:
 
 
 def refresh() -> pd.DataFrame:
-    return load_financials(force_refresh=True)
+    """Force re-fetch from EDGAR: clears parquet + entire Flask cache."""
+    if _CACHE.exists():
+        _CACHE.unlink()
+    cache.clear()          # also invalidates all memoized forecast results
+    return load_financials()

@@ -1,5 +1,6 @@
 venv/
 .venv/
+.flask_cache/
 __pycache__/
 *.pyc
 data/*.parquet
