@@ -42,6 +42,7 @@ _nav_items = [
     ("/forecast",  "bi-graph-up",    "Forecast"),
     ("/variance",  "bi-bar-chart",   "Variance"),
     ("/scenarios", "bi-sliders",     "Scenarios"),
+    ("/data",      "bi-database",    "Data"),
 ]
 
 def _nav_link(href, icon, label):
