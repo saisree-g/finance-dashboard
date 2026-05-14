@@ -1,0 +1,8 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+data/*.parquet
+.env
+.DS_Store
+.vscode/

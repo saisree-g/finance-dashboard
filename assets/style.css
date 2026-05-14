@@ -1,0 +1,66 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #f1f5f9; font-family: Inter, system-ui, sans-serif; }
+
+.sidebar {
+    position: fixed; top: 0; left: 0; bottom: 0; width: 230px;
+    background: #1e3a5f;
+    padding: 1.6rem 1.2rem; display: flex; flex-direction: column;
+    z-index: 100;
+}
+.sidebar-brand { margin-bottom: 0.4rem; }
+.sidebar-ticker { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 0.04em; }
+.sidebar-tagline { font-size: 0.62rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+.sidebar-nav { display: flex; flex-direction: column; gap: 0.15rem; }
+.sidebar-link-wrapper { text-decoration: none !important; }
+.sidebar-link {
+    display: flex; align-items: center; padding: 0.55rem 0.75rem;
+    border-radius: 6px; color: rgba(255,255,255,0.65);
+    font-size: 0.82rem; font-weight: 500; cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+}
+.sidebar-link:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+.sidebar-refresh-btn {
+    width: 100%; padding: 0.45rem 0.75rem; border-radius: 6px;
+    background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.18); font-size: 0.78rem;
+    cursor: pointer; transition: background 0.18s;
+}
+.sidebar-refresh-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+
+.sidebar-footer { margin-top: auto; }
+
+.main-content { margin-left: 230px; padding: 1.8rem 2rem; min-height: 100vh; }
+
+.page-header { margin-bottom: 1.6rem; }
+.page-title { font-size: 1.5rem; font-weight: 700; color: #1e293b; margin: 0 0 4px; }
+.page-subtitle { font-size: 0.82rem; color: #475569; margin: 0; }
+
+.kpi-card {
+    background: #ffffff; border-radius: 10px;
+    padding: 1.1rem 1.2rem; border: 1px solid #e2e8f0;
+    border-top: 3px solid #2563eb;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+.kpi-value { font-size: 1.7rem; font-weight: 700; color: #1e293b; line-height: 1.1; }
+.kpi-label { font-size: 0.62rem; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+.kpi-delta { font-size: 0.75rem; margin-top: 4px; }
+.delta-pos { color: #10b981; }
+.delta-neg { color: #ef4444; }
+
+.chart-card {
+    background: #ffffff; border-radius: 10px;
+    padding: 1rem 1.2rem; border: 1px solid #e2e8f0;
+    margin-bottom: 1.2rem; box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+.narrative-card {
+    background: #eff6ff; border-left: 4px solid #2563eb;
+    padding: 1rem 1.2rem; border-radius: 0 8px 8px 0;
+    margin-bottom: 1.2rem; font-size: 0.88rem; color: #1e293b;
+    line-height: 1.6;
+}
+.narrative-label {
+    font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: #2563eb; font-weight: 600; margin-bottom: 0.4rem;
+}
