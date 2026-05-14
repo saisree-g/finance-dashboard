@@ -41,16 +41,23 @@ layout = html.Div([
         ]), md=3),
     ], className="mb-3"),
 
-    # GenAI narrative
-    html.Div(id="forecast-narrative", className="narrative-card"),
+    dcc.Loading(
+        html.Div([
+            # GenAI narrative
+            html.Div(id="forecast-narrative", className="narrative-card"),
 
-    dbc.Row([
-        dbc.Col(html.Div(dcc.Graph(id="forecast-main-chart", config={"displayModeBar": False}), className="chart-card"), md=8),
-        dbc.Col(html.Div(dcc.Graph(id="mape-chart",          config={"displayModeBar": False}), className="chart-card"), md=4),
-    ], className="g-3 mb-3"),
+            dbc.Row([
+                dbc.Col(html.Div(dcc.Graph(id="forecast-main-chart", config={"displayModeBar": False}), className="chart-card"), md=8),
+                dbc.Col(html.Div(dcc.Graph(id="mape-chart",          config={"displayModeBar": False}), className="chart-card"), md=4),
+            ], className="g-3 mb-3"),
 
-    # Forecast table
-    html.Div(id="forecast-table", className="chart-card"),
+            # Forecast table
+            html.Div(id="forecast-table", className="chart-card"),
+        ]),
+        type="circle",
+        color="#2563eb",
+        style={"minHeight": "200px"},
+    ),
 ])
 
 

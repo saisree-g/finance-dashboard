@@ -33,9 +33,9 @@ body { margin: 0; background: #f1f5f9; font-family: Inter, system-ui, sans-serif
 
 .main-content { margin-left: 230px; padding: 1.8rem 2rem; min-height: 100vh; }
 
-.page-header { margin-bottom: 1.6rem; }
-.page-title { font-size: 1.5rem; font-weight: 700; color: #1e293b; margin: 0 0 4px; }
-.page-subtitle { font-size: 0.82rem; color: #475569; margin: 0; }
+.page-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0; }
+.page-title { font-size: 1.5rem; font-weight: 700; color: #1e293b; margin: 0 0 6px; }
+.page-subtitle { font-size: 0.82rem; color: #475569; margin: 0; line-height: 1.5; }
 
 .kpi-card {
     background: #ffffff; border-radius: 10px;
@@ -43,9 +43,9 @@ body { margin: 0; background: #f1f5f9; font-family: Inter, system-ui, sans-serif
     border-top: 3px solid #2563eb;
     box-shadow: 0 1px 6px rgba(0,0,0,0.05);
 }
-.kpi-value { font-size: 1.7rem; font-weight: 700; color: #1e293b; line-height: 1.1; }
-.kpi-label { font-size: 0.62rem; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
-.kpi-delta { font-size: 0.75rem; margin-top: 4px; }
+.kpi-label { font-size: 0.62rem; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.kpi-value { font-size: 1.7rem; font-weight: 700; color: #1e293b; line-height: 1.15; margin-bottom: 4px; }
+.kpi-delta { font-size: 0.75rem; margin-top: 6px; }
 .delta-pos { color: #10b981; }
 .delta-neg { color: #ef4444; }
 

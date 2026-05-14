@@ -21,13 +21,20 @@ layout = html.Div([
         html.P("Actual vs Ensemble forecast · Quarters where variance exceeds ±5% are flagged", className="page-subtitle"),
     ], className="page-header"),
 
-    html.Div(id="variance-flags", className="mb-3"),
+    dcc.Loading(
+        html.Div([
+            html.Div(id="variance-flags", className="mb-3"),
 
-    dbc.Row([
-        dbc.Col(html.Div(dcc.Graph(id="variance-main-chart", config={"displayModeBar": False}), className="chart-card"), md=12),
-    ], className="mb-3"),
+            dbc.Row([
+                dbc.Col(html.Div(dcc.Graph(id="variance-main-chart", config={"displayModeBar": False}), className="chart-card"), md=12),
+            ], className="mb-3"),
 
-    html.Div(id="variance-table", className="chart-card"),
+            html.Div(id="variance-table", className="chart-card"),
+        ]),
+        type="circle",
+        color="#2563eb",
+        style={"minHeight": "200px"},
+    ),
 ])
 
 

@@ -21,8 +21,8 @@ dash.register_page(__name__, path="/", name="Overview", title="Overview — TMO 
 def _kpi(label: str, value: str, delta: str | None = None, positive: bool = True) -> html.Div:
     delta_el = html.Div(delta, className=f"kpi-delta {'delta-pos' if positive else 'delta-neg'}") if delta else None
     return html.Div([
-        html.Div(value, className="kpi-value"),
         html.Div(label, className="kpi-label"),
+        html.Div(value, className="kpi-value"),
         delta_el,
     ], className="kpi-card")
 
@@ -37,16 +37,23 @@ layout = html.Div([
         html.P("Quarterly actuals · Thermo Fisher Scientific (TMO) · Source: SEC EDGAR 10-Q/10-K", className="page-subtitle"),
     ], className="page-header"),
 
-    html.Div(id="overview-kpis"),
+    dcc.Loading(
+        html.Div([
+            html.Div(id="overview-kpis"),
 
-    dbc.Row([
-        dbc.Col(html.Div(dcc.Graph(id="revenue-hist-chart", config={"displayModeBar": False}), className="chart-card"), md=8),
-        dbc.Col(html.Div(dcc.Graph(id="waterfall-chart",    config={"displayModeBar": False}), className="chart-card"), md=4),
-    ], className="g-3 mb-3"),
+            dbc.Row([
+                dbc.Col(html.Div(dcc.Graph(id="revenue-hist-chart", config={"displayModeBar": False}), className="chart-card"), md=8),
+                dbc.Col(html.Div(dcc.Graph(id="waterfall-chart",    config={"displayModeBar": False}), className="chart-card"), md=4),
+            ], className="g-3 mb-3"),
 
-    dbc.Row([
-        dbc.Col(html.Div(dcc.Graph(id="margin-trend-chart", config={"displayModeBar": False}), className="chart-card"), md=12),
-    ]),
+            dbc.Row([
+                dbc.Col(html.Div(dcc.Graph(id="margin-trend-chart", config={"displayModeBar": False}), className="chart-card"), md=12),
+            ]),
+        ]),
+        type="circle",
+        color="#2563eb",
+        style={"minHeight": "200px"},
+    ),
 ])
 
 

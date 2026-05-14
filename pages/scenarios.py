@@ -21,12 +21,19 @@ layout = html.Div([
         html.P("Base · Optimistic (+8%) · Pessimistic (-8%) applied to Ensemble forecast", className="page-subtitle"),
     ], className="page-header"),
 
-    dbc.Row([
-        dbc.Col(html.Div(dcc.Graph(id="scenario-chart", config={"displayModeBar": False}), className="chart-card"), md=8),
-        dbc.Col(html.Div(id="scenario-summary"), md=4),
-    ], className="g-3 mb-3"),
+    dcc.Loading(
+        html.Div([
+            dbc.Row([
+                dbc.Col(html.Div(dcc.Graph(id="scenario-chart", config={"displayModeBar": False}), className="chart-card"), md=8),
+                dbc.Col(html.Div(id="scenario-summary"), md=4),
+            ], className="g-3 mb-3"),
 
-    html.Div(id="scenario-table", className="chart-card"),
+            html.Div(id="scenario-table", className="chart-card"),
+        ]),
+        type="circle",
+        color="#2563eb",
+        style={"minHeight": "200px"},
+    ),
 ])
 
 
